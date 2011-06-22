@@ -85,12 +85,18 @@ primeiro registro é uma descrição dos campos e o outro é um exemplo:
             {
                 capacity: "qtd de lugares da sala",
                 uid: "id dessa sala no sistema do fisl",
-                name: "descricao da sala"
+                name: "descricao da sala",
+                position: "Parece que foi utilizado para ordenacao das salas na
+                           grade de palestras",
+                translation: "Se a sala permite tradução simultanea"
+
             },
             {
                 capacity: "536",
                 uid: "8",
-                name: "40-T fisl 8"
+                name: "40-T fisl 8",
+                position: "1",
+                translation: "True"
             },
         ],
         areas: [
@@ -118,13 +124,15 @@ primeiro registro é uma descrição dos campos e o outro é um exemplo:
         ],
         authors: [
             {
-                uid: "id desse autor no sistema do fisl (deve ser ligado com
-                      author_id de talks)",
-                name: "nome do autor"
+                uid: "identificador de tabela",
+                name: "nome do autor",
+                candidate: "id desse autor no sistema do fisl (deve ser ligado
+                            com author_id de talks)",
             },
             {
                 uid: "27",
-                name: "Sergio Amadeu da Silveira"
+                name: "Sergio Amadeu da Silveira",
+                candidate: "14"
             }
         ],
         zones: [
