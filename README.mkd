@@ -23,7 +23,7 @@ Ou se você usa Ubuntu, siga essas instruções:
 Se você estiver utilizando Archlinux (tnx @estevaovix) , o comando pip será
 esse:
 
-    python2-pip install -U Scrapy
+    sudo python2-pip install -U Scrapy
 
 Como utilizar
 -------------
