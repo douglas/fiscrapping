@@ -148,6 +148,8 @@ Executar o interpretador Python:
 
     $ python
 
+Agora vamos importar o módulo json:
+
     >>> import json
 
 Uma consideração: Se o módulo json não estiver disponível, utilize o módulo 
