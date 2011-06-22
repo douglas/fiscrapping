@@ -2,4 +2,4 @@
 *.pyc
 *.html
 *.db
-
+*.DS_Store
