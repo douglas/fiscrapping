@@ -60,8 +60,8 @@ primeiro registro é uma descrição dos campos e o outro é um exemplo:
                 date: "dia da palestra",
                 abstract: "resumo da palestra",
                 level: "nivel da palestra",
-                author_id: "id do autor no sistema do fisl",
-                minute: "minutos da palestra"
+                candidate: "id do autor no sistema do fisl",
+                minute: "minutos da palestra",
             },
             {
                 area_id: "4",
@@ -77,14 +77,15 @@ primeiro registro é uma descrição dos campos e o outro é um exemplo:
                            And where you may already be using RRDtool today
                            without knowing it.",
                 level: "",
-                author_id: "835",
+                candidate: "835",
                 minute: "00"
             }
         ],  
         rooms: [
             {
                 capacity: "qtd de lugares da sala",
-                uid: "id dessa sala no sistema do fisl",
+                room_id: "id dessa sala no sistema do fisl (deve ser ligado
+                          com room_id de talks)",
                 name: "descricao da sala",
                 position: "Parece que foi utilizado para ordenacao das salas na
                            grade de palestras",
@@ -93,7 +94,7 @@ primeiro registro é uma descrição dos campos e o outro é um exemplo:
             },
             {
                 capacity: "536",
-                uid: "8",
+                room_id: "8",
                 name: "40-T fisl 8",
                 position: "1",
                 translation: "True"
@@ -102,7 +103,8 @@ primeiro registro é uma descrição dos campos e o outro é um exemplo:
         areas: [
             {
                 description: "Descrição da area",
-                uid: "id dessa area (deve ser ligado com o area_id de talks)",
+                area_id: "id dessa area (deve ser ligado com o area_id de
+                          talks)",
                 name: "nome da area"
             },
             {
@@ -118,30 +120,31 @@ primeiro registro é uma descrição dos campos e o outro é um exemplo:
                               pacotes, gerenciamento de servi&amp;#231;os do
                               sistema, Palestras sobre softwares e protocolos
                               de voz sobre IP, etc.",
-                uid: "11",
+                area_id: "11",
                 name: "AdministraÃ§Ã£o de Sistemas e VoIP"
             }
         ],
         authors: [
             {
-                uid: "identificador de tabela",
+                author_id: "identificador de tabela",
                 name: "nome do autor",
                 candidate: "id desse autor no sistema do fisl (deve ser ligado
-                            com author_id de talks)",
+                            com candidate de talks)",
             },
             {
-                uid: "27",
+                author_id: "27",
                 name: "Sergio Amadeu da Silveira",
                 candidate: "14"
             }
         ],
         zones: [
             {
-                uid: "3",
-                name: "Administração"
+                zone_id: "id da zona no sistema do fisl (deve ser ligado com
+                          zone_id de talks)",
+                name: "Nome da zona"
             },
             {
-                uid: "3",
+                zone_id: "3",
                 name: "Administração"
             }
         ]
