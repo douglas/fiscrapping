@@ -77,14 +77,17 @@ class TalksSpider(BaseSpider):
 
         for author in authors:
             data = {'uid': get_text(author, "@id"),
-                    'name': get_text(author, "@name")}
+                    'name': get_text(author, "@name"),
+                    'candidate': get_text(author, "@candidate")}
 
             info['authors'].append(data)
 
         for room in rooms:
             data = {'uid': get_text(room, "@id"),
                     'name': get_text(room, "name/text()"),
-                    'capacity': get_text(room, "capacity/text()")}
+                    'capacity': get_text(room, "capacity/text()"),
+                    'translation': get_text(room, "translation/text()"),
+                    'position': get_text(room, "position/text()")}
 
             info['rooms'].append(data)
 
