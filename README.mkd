@@ -1,0 +1,43 @@
+FISCRAPPING
+===========
+
+Fiscrapping é um crawler para extrair as informações da programação do FISL
+para serem utilizadas em outros sistemas.
+
+Dependências
+------------
+
+O código foi todo escrito em Python e a única dependência é a biblioteca
+Scrapy que pode ser instalada das seguintes formas:
+
+    easy_install -U Scrapy
+
+Ou se você estiver utilizando o pip:
+
+    pip install -U Scrapy
+
+Ou se você usa Ubuntu, siga essas instruções:
+
+    http://doc.scrapy.org/topics/ubuntu.html
+
+Como utilizar
+-------------
+
+Moleza, basta fazer um checkout desse projeto utilizando o git ou clicar no
+link abaixo:
+
+    https://github.com/dsarch/fiscrapping/tarball/master
+
+Se você utilizou o link acima, descompacte e entre na pasta gerada e execute o
+seguinte comando:
+
+    ./parse_data.sh
+
+O Scrapy mostrará algumas opções de depuração e os arquivos resultantes estarão
+na pasta output.
+
+
+O que eu faço com esses arquivos ?
+----------------------------------
+
+TODO
