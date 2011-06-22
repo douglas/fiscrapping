@@ -23,6 +23,7 @@ class Talk(models.Model):
     area = models.ForeignKey(Area)
     room = models.ForeignKey(Room)
     zone = models.ForeignKey(Zone)
+    author = models.ForeignKey(Author)
     hour = models.TimeField()
     minute = models.TimeField()
     date = models.DateField()
