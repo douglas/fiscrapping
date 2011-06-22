@@ -59,7 +59,7 @@ class TalksSpider(BaseSpider):
             data = {'title': get_text(talk, "@title"),
                     'abstract': get_text(talk, "@abstract"),
                     'area_id': get_text(talk, "@area"),
-                    'author_id': get_text(talk, "@candidate"),
+                    'candidate': get_text(talk, "@candidate"),
                     'date': get_text(talk, "@date"),
                     'hour': get_text(talk, "@hour"),
                     'minute': get_text(talk, "@minute"),
@@ -70,20 +70,20 @@ class TalksSpider(BaseSpider):
             info['talks'].append(data)
 
         for zone in zones:
-            data = {'uid': get_text(zone, "@id"),
+            data = {'zone_id': get_text(zone, "@id"),
                     'name': get_text(zone, "name/text()")}
 
             info['zones'].append(data)
 
         for author in authors:
-            data = {'uid': get_text(author, "@id"),
+            data = {'author_id': get_text(author, "@id"),
                     'name': get_text(author, "@name"),
                     'candidate': get_text(author, "@candidate")}
 
             info['authors'].append(data)
 
         for room in rooms:
-            data = {'uid': get_text(room, "@id"),
+            data = {'room_id': get_text(room, "@id"),
                     'name': get_text(room, "name/text()"),
                     'capacity': get_text(room, "capacity/text()"),
                     'translation': get_text(room, "translation/text()"),
@@ -92,7 +92,7 @@ class TalksSpider(BaseSpider):
             info['rooms'].append(data)
 
         for area in areas:
-            data = {'uid': get_text(area, "@id"),
+            data = {'area_id': get_text(area, "@id"),
                     'name': get_text(area, "name/text()"),
                     'description': get_text(area, "descr/text()")}
 
