@@ -45,4 +45,123 @@ na pasta output.
 O que eu faço com esses arquivos ?
 ----------------------------------
 
-TODO
+Na pasta output temos um arquivos data.json que segue esse esquema, onde o
+primeiro registro é uma descrição dos campos e o outro é um exemplo:
+
+
+    {
+        talks: [
+            {
+                area_id: "codigo da area no sistema do fisl",
+                room_id: "codigo da sala no sistema do fisl",
+                zone_id: "codigo da zona no sistema do fisl",
+                hour: "hora da palestra",
+                title: "titulo da palestra",
+                date: "dia da palestra",
+                abstract: "resumo da palestra",
+                level: "nivel da palestra",
+                author_id: "id do autor no sistema do fisl",
+                minute: "minutos da palestra"
+            },
+            {
+                area_id: "4",
+                room_id: "8",
+                zone_id: "2",
+                hour: "09",
+                title: "rrdtool",
+                date: "2011-07-01",
+                abstract: "RRDtool is a "one trick pony" open source database,
+                           with the sole purpose of storing time series data.
+                           In this talk you will learn how you could use
+                           RRDtool how you could use it in your own scripts.
+                           And where you may already be using RRDtool today
+                           without knowing it.",
+                level: "",
+                author_id: "835",
+                minute: "00"
+            }
+        ],  
+        rooms: [
+            {
+                capacity: "qtd de lugares da sala",
+                uid: "id dessa sala no sistema do fisl",
+                name: "descricao da sala"
+            },
+            {
+                capacity: "536",
+                uid: "8",
+                name: "40-T fisl 8"
+            },
+        ],
+        areas: [
+            {
+                description: "Descrição da area",
+                uid: "id dessa area (deve ser ligado com o area_id de talks)",
+                name: "nome da area"
+            },
+            {
+                description: "Palestras t&amp;#233;cnicas sobre
+                              administra&amp;#231;&amp;#227;o de sistemas
+                              livres em geral.
+                              Servi&amp;#231;os de rede como MTA's,
+                              gerenciamento de usu&amp;#225;rios e grupos,
+                              autentica&amp;#231;&amp;#227;o,
+                              monitora&amp;#231;&amp;#227;o,
+                              servidores web, infra-estrutura, gerenciamento de
+                              sistemas operacionais, ger&amp;#234;ncia de
+                              pacotes, gerenciamento de servi&amp;#231;os do
+                              sistema, Palestras sobre softwares e protocolos
+                              de voz sobre IP, etc.",
+                uid: "11",
+                name: "AdministraÃ§Ã£o de Sistemas e VoIP"
+            }
+        ],
+        authors: [
+            {
+                uid: "id desse autor no sistema do fisl (deve ser ligado com
+                      author_id de talks)",
+                name: "nome do autor"
+            },
+            {
+                uid: "27",
+                name: "Sergio Amadeu da Silveira"
+            }
+        ],
+        zones: [
+            {
+                uid: "3",
+                name: "Administração"
+            },
+            {
+                uid: "3",
+                name: "Administração"
+            }
+        ]
+    }
+
+Para ter acesso aos dados deserializados (json->obj) em Python, você pode ir
+para a pasta onde o arquivo data.json foi gerado:
+
+    $ cd pasta_com_o_codigo/output
+
+Executar o interpretador Python:
+
+    $ python
+
+    >>> import json
+
+Uma consideração: Se o módulo json não estiver disponível, utilize o módulo 
+simplejson dessa forma:
+
+    >>> import simplejson as json
+
+Blz, agora vamos deserializar os dados:
+
+    >>> data = json.loads(open('data.json','r').read())
+
+Pronto, agora podemos ver as chaves desse dicionário:
+
+    >>> data.keys()
+    [u'talks', u'zones', u'authors', u'rooms', u'areas']
+
+É isso, agora é fazer o que quiser com os dados.
