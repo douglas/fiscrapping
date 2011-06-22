@@ -18,7 +18,7 @@ Ou se você estiver utilizando o pip:
 
 Ou se você usa Ubuntu, siga essas instruções:
 
-    <http://doc.scrapy.org/topics/ubuntu.html>
+http://doc.scrapy.org/topics/ubuntu.html
 
 Se você estiver utilizando Archlinux (tnx @estevaovix) , o comando pip será
 esse:
@@ -31,7 +31,7 @@ Como utilizar
 Moleza, basta fazer um checkout desse projeto utilizando o git ou clicar no
 link abaixo:
 
-    <https://github.com/dsarch/fiscrapping/tarball/master>
+https://github.com/dsarch/fiscrapping/tarball/master
 
 Se você utilizou o link acima, descompacte e entre na pasta gerada e execute o
 seguinte comando:
