@@ -4,9 +4,17 @@
     <head>
         <title>Minha Grade</title>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-        <!-- <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css"> -->
+        <link href="{{ STATIC_URL }}css/grid.css" rel="stylesheet" type="text/css"/>
+        <link href="{{ STATIC_URL }}css/base.css" rel="stylesheet" type="text/css"/>
+        {% block extra_style %}
+        {% endblock %}
     </head>
     <body>
+        {% block header %}
+            <div class="header">
+                <h1>Minha Grade</h1> 
+            </div>
+        {% endblock %}
         {% block content %}{% endblock %}
     </body>
 </html>
