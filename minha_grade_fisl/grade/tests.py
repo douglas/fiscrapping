@@ -24,7 +24,7 @@ class TestViews(TestCase):
 
     def test_generate_author_from_json(self):
         gerar_authors(self.json)
-        self.assertEquals(len(Author.objects.all()), 389)
+        self.assertEquals(len(Author.objects.all()), 351)
 
     def test_generate_talk_from_json(self):
         gerar_talks(self.json)
