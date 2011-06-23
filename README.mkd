@@ -52,7 +52,7 @@ primeiro registro é uma descrição dos campos e o outro é um exemplo:
                 date: "dia da palestra",
                 abstract: "resumo da palestra",
                 level: "nivel da palestra",
-                candidate: "id do autor no sistema do fisl",
+                candidate: "id dos autores no sistema do fisl",
                 minute: "minutos da palestra",
             },
             {
