@@ -151,5 +151,5 @@ LOGGING = {
 
 # Arquivo para ambiente de testes (desenvolvimento)
 local_settings = os.path.join(PROJECT_ROOT, 'local_settings.py')
-if os.path.isfile(local_settings) and DEBUG:
+if os.path.isfile(local_settings):
     execfile(local_settings)
