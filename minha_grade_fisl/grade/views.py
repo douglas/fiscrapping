@@ -2,8 +2,6 @@
 
 from django.utils import simplejson
 from django.http import HttpResponse
-from django.db import IntegrityError
-from django.core.exceptions import ObjectDoesNotExist
 from grade.models import Room, Area, Zone, Author, Talk
 
 
@@ -56,8 +54,6 @@ def gerar_talks(json):
         # Now we tie the authors to the talk
         t.authors = Author.objects.filter(candidate=talk['candidate'])
         t.save()
-    
-    import ipdb; ipdb.set_trace()
 
 
 def gerar_grade(request):
