@@ -14,18 +14,14 @@ open(filename, 'w').write(xml)
 
 
 def get_text(obj, path):
-    """
-    Dont mind this code, it will serve as a base for a little patch to scrapy's
-    XPathSelector so it could work as django's values_list with the flat=True
-    argument.
-    """
+    """ Return only an empty string or the element text """
 
     data = obj.xpath(path)
 
     if not data:
         return ""
     elif len(data) == 1:
-        return unicode(data[0])
+        return data[0]
     else:
         raise AssertionError('You xpath expr should return one or zero items')
 
