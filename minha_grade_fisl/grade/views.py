@@ -2,8 +2,14 @@
 
 from django.utils import simplejson
 from django.http import HttpResponse
+from django.template.response import TemplateResponse
+
 from grade.models import Room, Area, Zone, Author, Talk
 
+
+def home(request):
+    talks = Talk.objects.all()
+    return TemplateResponse(request, "grade/index.html", {'talks': talks})
 
 def gerar_rooms(json):
     for room in json['rooms']:
