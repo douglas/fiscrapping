@@ -1,8 +1,10 @@
 from django.test import TestCase, Client
+from django.test.client import RequestFactory
 from django.utils import simplejson
 
 from grade.views import gerar_rooms, gerar_areas, gerar_zones, gerar_authors
 from grade.views import gerar_talks
+from grade.views import home
 
 from grade.models import Room, Area, Zone, Author, Talk
 
@@ -34,7 +36,17 @@ class TestViews(TestCase):
 
     def test_access_view_and_generate_talks(self):
         client = Client()
-        response = client.get('/gerar_grade')
+        response = client.get('/gerar_grade/')
 
         self.assertEquals(response.status_code, 200)
         self.assertEquals(response.content, "Grade gerada com sucesso!")
+
+    def test_access_home_and_see_all_talks(self):
+        factory = RequestFactory()
+        request = factory.get('/')
+        
+        gerar_talks(self.json)
+        response = home(request)
+
+        self.assertEquals(response.status_code, 200)
+        self.assertEquals(len(response.context_data['talks']), len(Talk.objects.all()))

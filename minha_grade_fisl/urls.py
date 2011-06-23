@@ -6,8 +6,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'minha_grade_fisl.views.home', name='home'),
+    url(r'^$', 'grade.views.home', name='home'),
     # url(r'^minha_grade_fisl/', include('minha_grade_fisl.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
