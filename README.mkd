@@ -7,23 +7,16 @@ para serem utilizadas em outros sistemas.
 Dependências
 ------------
 
-O código foi todo escrito em Python e a única dependência é a biblioteca
-Scrapy que pode ser instalada das seguintes formas:
+O código foi escrito em Python utilizando a biblioteca padrão da linguagem,
+contudo, precisamos do python 2.6 por causa dos módulos json e contextlib.
 
-    easy_install -U Scrapy
+Tem uma versão utilizando o módulo lxml, mas é necessário instalá-lo:
+
+    easy_install -U lxml
 
 Ou se você estiver utilizando o pip:
 
-    pip install -U Scrapy
-
-Ou se você usa Ubuntu, siga essas instruções:
-
-http://doc.scrapy.org/topics/ubuntu.html
-
-Se você estiver utilizando Archlinux (tnx @estevaovix) , o comando pip será
-esse:
-
-    sudo python2-pip install -U Scrapy
+    pip install -U lxml
 
 Como utilizar
 -------------
@@ -38,8 +31,7 @@ seguinte comando:
 
     ./parse_data.sh
 
-O Scrapy mostrará algumas opções de depuração e os arquivos resultantes estarão
-na pasta output.
+Os arquivos gerados estarão na pasta output.
 
 
 O que eu faço com esses arquivos ?
