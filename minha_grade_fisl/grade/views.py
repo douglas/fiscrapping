@@ -11,6 +11,7 @@ def home(request):
     talks = Talk.objects.all()
     return TemplateResponse(request, "grade/index.html", {'talks': talks})
 
+
 def gerar_rooms(json):
     for room in json['rooms']:
         Room.objects.create(uid=room['room_id'],
@@ -63,7 +64,7 @@ def gerar_talks(json):
 
 
 def gerar_grade(request):
-    data_json = open("static_media/json/data.json", "r").read()
+    data_json = open("public/json/data.json", "r").read()
     json = simplejson.loads(data_json)
 
     gerar_talks(json)
