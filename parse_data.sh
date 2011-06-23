@@ -1,7 +1,7 @@
 #!/bin/bash
 
 rm -rf output/*
-scrapy crawl fisl.org.br
+python parser.py
 
 echo
 echo "=================> Done ! Check the output folder."
