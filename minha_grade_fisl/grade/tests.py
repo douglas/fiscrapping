@@ -1,9 +1,11 @@
 from django.test import TestCase, Client
 from django.utils import simplejson
 
-from grade.views import gerar_rooms, gerar_areas, gerar_zones, gerar_authors, gerar_talks
+from grade.views import gerar_rooms, gerar_areas, gerar_zones, gerar_authors
+from grade.views import gerar_talks
 
 from grade.models import Room, Area, Zone, Author, Talk
+
 
 class TestViews(TestCase):
     def setUp(self):
@@ -24,11 +26,11 @@ class TestViews(TestCase):
 
     def test_generate_author_from_json(self):
         gerar_authors(self.json)
-        self.assertEquals(len(Author.objects.all()), 351)
+        self.assertEquals(len(Author.objects.all()), 495)
 
     def test_generate_talk_from_json(self):
         gerar_talks(self.json)
-        self.assertEquals(len(Talk.objects.all()), 300)
+        self.assertEquals(len(Talk.objects.all()), 351)
 
     def test_access_view_and_generate_talks(self):
         client = Client()
