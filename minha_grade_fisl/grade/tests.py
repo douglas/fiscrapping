@@ -14,6 +14,8 @@ class TestViews(TestCase):
         data_json = open("public/json/data.json", "r").read()
         self.json = simplejson.loads(data_json)
 
+        self.factory = RequestFactory()
+
     def test_generate_room_from_json(self):
         gerar_rooms(self.json)
         self.assertEquals(len(Room.objects.all()), 12)
@@ -42,8 +44,7 @@ class TestViews(TestCase):
         self.assertEquals(response.content, "Grade gerada com sucesso!")
 
     def test_access_home_and_see_all_talks(self):
-        factory = RequestFactory()
-        request = factory.get('/')
+        request = self.factory.get('/')
 
         gerar_talks(self.json)
         response = home(request)

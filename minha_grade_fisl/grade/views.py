@@ -8,8 +8,15 @@ from grade.models import Room, Area, Zone, Author, Talk
 
 
 def home(request):
-    talks = Talk.objects.all()
-    return TemplateResponse(request, "grade/index.html", {'talks': talks})
+    talks = []
+    days = Talk.objects.dates("date", "day")
+    hours = Talk.objects.values_list("hour", flat=True).distinct()
+
+    for day in days:
+        for hour in hours:
+            talks.append(Talk.objects.filter(date=day, hour=hour))
+
+    return TemplateResponse(request, "grade/index.html", {'talks_by_day': talks})
 
 
 def gerar_rooms(json):
