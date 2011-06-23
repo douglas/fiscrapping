@@ -1,0 +1,2 @@
+django-debug-toolbar==0.8.5
+django-dtpanel-htmltidy==0.1.1
