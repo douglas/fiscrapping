@@ -11,7 +11,7 @@ from grade.models import Room, Area, Zone, Author, Talk
 
 class TestViews(TestCase):
     def setUp(self):
-        data_json = open("static_media/json/data.json", "r").read()
+        data_json = open("public/json/data.json", "r").read()
         self.json = simplejson.loads(data_json)
 
     def test_generate_room_from_json(self):
@@ -44,9 +44,10 @@ class TestViews(TestCase):
     def test_access_home_and_see_all_talks(self):
         factory = RequestFactory()
         request = factory.get('/')
-        
+
         gerar_talks(self.json)
         response = home(request)
 
         self.assertEquals(response.status_code, 200)
-        self.assertEquals(len(response.context_data['talks']), len(Talk.objects.all()))
+        self.assertEquals(len(response.context_data['talks']),
+                          len(Talk.objects.all()))

@@ -1,6 +1,6 @@
-from settings import MIDDLEWARE_CLASSES, INSTALLED_APPS, PROJECT_ROOT
+from settings import MIDDLEWARE_CLASSES, INSTALLED_APPS
 
-import os
+import sys
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -26,14 +26,10 @@ DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar_htmltidy.panels.HTMLTidyDebugPanel',
 )
 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_ROOT, 'minha_grade.db'),
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+if 'test' in sys.argv:
+    DATABASES = {
+        'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': ':memory:',
+        }
     }
-}
