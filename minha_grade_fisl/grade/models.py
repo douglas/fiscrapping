@@ -8,11 +8,17 @@ class Room(models.Model):
     position = models.CharField(max_length=200)
     translation = models.BooleanField()
 
+    def __unicode__(self):
+        return unicode(self.name)
+
 
 class Area(models.Model):
     description = models.TextField()
     uid = models.IntegerField(unique=True)
     name = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return unicode(self.name)
 
 
 class Author(models.Model):
@@ -20,10 +26,16 @@ class Author(models.Model):
     name = models.CharField(max_length=200)
     candidate = models.IntegerField()
 
+    def __unicode__(self):
+        return unicode(self.name)
+
 
 class Zone(models.Model):
     uid = models.IntegerField(unique=True)
     name = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return unicode(self.name)
 
 
 class Talk(models.Model):
@@ -37,3 +49,6 @@ class Talk(models.Model):
     level = models.CharField(max_length=150)
     authors = models.ManyToManyField('Author')
     minute = models.CharField(max_length=2)
+
+    def __unicode__(self):
+        return unicode(self.title)
