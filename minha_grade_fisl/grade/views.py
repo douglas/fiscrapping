@@ -3,8 +3,33 @@
 from django.utils import simplejson
 from django.http import HttpResponse
 from django.template.response import TemplateResponse
+from django.views.generic import ListView, DetailView, TemplateView
 
 from grade.models import Room, Area, Zone, Author, Talk
+
+
+class TalkDetailView(DetailView):
+    """ View utilizada para mostrar a palestra """
+
+    model = Talk
+    context_object_name = 'talk'
+
+
+class TalkListView(TemplateView):
+    """ View utilizada para mostrar as palestras """
+
+    template_name = "grade/talks_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(TalkListView, self).get_context_data(**kwargs)
+
+        days = Talk.objects.dates("date", "day")
+        hours = map(lambda x: str(x).zfill(2), range(9, 19))
+
+        context['days'] = days
+        context['hours'] = hours
+
+        return context
 
 
 def home(request):
@@ -16,7 +41,8 @@ def home(request):
         for hour in hours:
             talks.append(Talk.objects.filter(date=day, hour=hour))
 
-    return TemplateResponse(request, "grade/index.html", {'talks_by_day': talks})
+    return TemplateResponse(request, "grade/index.html",
+                            {'talks_by_day': talks})
 
 
 def gerar_rooms(json):
