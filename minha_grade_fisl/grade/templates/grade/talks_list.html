@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load grade_tags %}
+
+
+
+{% block content %}
+    <div>
+        {% for day in days %}
+        {% for hour in hours %}
+        <table summary="Talks of {{ day|date:"d \d\e F \d\e Y" }} {{ hour }}:00">
+            <thead>
+                <tr><td>Dia: {{ day|date:"d \d\e F \d\e Y" }} / Horário: {{ hour }}:00</td></tr>
+            </thead>
+            <tbody>
+                {% display_talks day hour %}
+            </tbody>
+        </table>
+        {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}
