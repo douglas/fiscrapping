@@ -17,20 +17,6 @@
 
 <br>
 
-<fieldset>
-    <legend>Quem vai a essa palestra ?</legend>
-    <ul>
-    {% for listener in talk.listeners.all %}
-    <li>{{ listener.twitter }}</li>
-    {% empty %}
-    0 pessoas cadastradas.
-    {% endfor %}
-
-    </ul>
-</fieldset>
-
-<br>
-
 <a href="{% url grade:talks %}">Voltar</a>
 
 {% endblock content %}
