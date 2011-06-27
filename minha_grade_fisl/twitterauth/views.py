@@ -29,8 +29,8 @@ authenticate_url = 'http://twitter.com/oauth/authenticate'
 def twitter_data(token, token_secret):
     """ Returns the current user information """
 
-    api = twitter.Api(consumer_key=settings.TWITTER_TOKEN,
-                      consumer_secret=settings.TWITTER_SECRET,
+    api = twitter.Api(consumer_key=TWITTER_TOKEN,
+                      consumer_secret=TWITTER_SECRET,
                       access_token_key=token,
                       access_token_secret=token_secret)
 
