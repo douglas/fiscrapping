@@ -20,9 +20,12 @@
 <fieldset>
     <legend>Quem vai a essa palestra ?</legend>
     <ul>
-    {% for listener in talk.listeners %}
+    {% for listener in talk.listeners.all %}
     <li>{{ listener.twitter }}</li>
+    {% empty %}
+    Ninguém se associou a essa palestra.
     {% endfor %}
+
     </ul>
 </fieldset>
 
