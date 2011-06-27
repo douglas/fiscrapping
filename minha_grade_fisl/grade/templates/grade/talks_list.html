@@ -2,9 +2,17 @@
 
 {% load grade_tags %}
 
-
-
 {% block content %}
+    <img src="{{ data.profile_image_url }}"
+         title="{{ data.screen_name }}"
+         alt="{{ data.screen_name }}" />
+
+    {% if data %}
+    <div><a href="{% url twitterauth:logout %}">Logout</a></div>
+    {% else %}
+    <div><a href="{% url twitterauth:login %}">Login</a></div>
+    {% endif %}
+    
     <div>
         {% for day in days %}
         {% for hour in hours %}
