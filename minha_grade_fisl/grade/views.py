@@ -2,10 +2,13 @@
 
 from django.utils import simplejson
 from django.http import HttpResponse
-from django.template.response import TemplateResponse
-from django.views.generic import ListView, DetailView, TemplateView
+from django.views.generic import DetailView, TemplateView
 
+# fisl
 from grade.models import Room, Area, Zone, Author, Talk
+
+# twitter
+from twitterauth.views import twitter_data
 
 
 class TalkDetailView(DetailView):
@@ -26,23 +29,30 @@ class TalkListView(TemplateView):
         days = Talk.objects.dates("date", "day")
         hours = map(lambda x: str(x).zfill(2), range(9, 19))
 
+        # twitter user data
+        if hasattr(self.request.user, 'get_profile'):
+            user_profile = self.request.user.get_profile()
+            data = twitter_data(user_profile.oauth_token,
+                                user_profile.oauth_secret)
+            context['data'] = data
+
         context['days'] = days
         context['hours'] = hours
 
         return context
 
 
-def home(request):
-    talks = []
-    days = Talk.objects.dates("date", "day")
-    hours = Talk.objects.values_list("hour", flat=True).distinct()
+# def home(request):
+#     talks = []
+#     days = Talk.objects.dates("date", "day")
+#     hours = Talk.objects.values_list("hour", flat=True).distinct()
 
-    for day in days:
-        for hour in hours:
-            talks.append(Talk.objects.filter(date=day, hour=hour))
+#     for day in days:
+#         for hour in hours:
+#             talks.append(Talk.objects.filter(date=day, hour=hour))
 
-    return TemplateResponse(request, "grade/index.html",
-                            {'talks_by_day': talks})
+#     return TemplateResponse(request, "grade/index.html",
+#                             {'talks_by_day': talks})
 
 
 def gerar_rooms(json):
