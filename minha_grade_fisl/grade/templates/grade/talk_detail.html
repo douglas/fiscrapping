@@ -17,6 +17,17 @@
 
 <br>
 
+<fieldset>
+    <legend>Quem vai a essa palestra ?</legend>
+    <ul>
+    {% for listener in talk.listeners %}
+    <li>{{ listener.twitter }}</li>
+    {% endfor %}
+    </ul>
+</fieldset>
+
+<br>
+
 <a href="{% url grade:talks %}">Voltar</a>
 
 {% endblock content %}
