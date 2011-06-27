@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Room(models.Model):
@@ -49,6 +50,7 @@ class Talk(models.Model):
     level = models.CharField(max_length=150)
     authors = models.ManyToManyField('Author')
     minute = models.CharField(max_length=2)
+    listeners = models.ManyToManyField(User)
 
     def __unicode__(self):
         return unicode(self.title)
