@@ -15,7 +15,7 @@ body {
     padding: 10px;
 }
 
-.day h2 {
+.day h2, .talk h2 {
     border-bottom: 5px solid #5D9A5D;
     color: #606060;
 }

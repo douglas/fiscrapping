@@ -1,7 +1,7 @@
 # coding: utf-8
 
 from django.utils import simplejson
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import DetailView, TemplateView
 
 # fisl
@@ -41,6 +41,14 @@ class TalkListView(TemplateView):
 
         return context
 
+def choice_talk(request, talk_id):
+    talk = Talk.objects.get(id=talk_id)
+    if not request.user.is_anonymous:
+        user = request.user
+        user.talk = talk
+        user.save()
+
+    return HttpResponseRedirect("/palestras/%s/" % talk_id)
 
 # def home(request):
 #     talks = []

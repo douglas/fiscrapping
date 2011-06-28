@@ -1,22 +1,22 @@
 {% extends 'base.html' %}
     
 {% block content %}
-<h4>{{ talk.title }}</h4>
-<p>{{ talk.abstract }}</p>
+    <div class="row">
+        <div class="grid_12 talk">
+            <h2>{{ talk.title }}</h2>
+            <p>{{ talk.abstract }}</p>
 
-<br>
-
-<fieldset>
-    <legend>Palestrantes</legend>
-    <ul>
-    {% for author in talk.authors.all %}
-    <li>{{ author.name }}</li>
-    {% endfor %}
-    </ul>
-</fieldset>
-
-<br>
-
-<a href="{% url grade:talks %}">Voltar</a>
-
+            <a href="escolher_palestra/">Eu Vou</a>
+            {{ talk.user_set.all }}
+            <fieldset>
+                <legend>Palestrantes</legend>
+                <ul>
+                    {% for author in talk.authors.all %}
+                        <li>{{ author.name }}</li>
+                    {% endfor %}
+                </ul>
+            </fieldset>
+            <a href="{% url grade:talks %}">Voltar</a>
+        </div>
+    </div>
 {% endblock content %}
