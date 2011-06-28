@@ -14,8 +14,8 @@ import cgi
 
 # twitter constants
 # twitter auth
-TWITTER_TOKEN = 'SGGKkq5hZF21DzkTpIR2vw'
-TWITTER_SECRET = 'XR4EzvyMJUC6uV0mAZLU3GzT151wTuVlovYowFKjrI'
+TWITTER_TOKEN = '5sLMAlpdyOCSSqwzGvcxZg'
+TWITTER_SECRET = '8Cx05LKg8IW1BnaFiRzRSnGyc7oBGJ7tTQT6oqqRk'
 consumer = oauth.Consumer(TWITTER_TOKEN, TWITTER_SECRET)
 client = oauth.Client(consumer)
 
