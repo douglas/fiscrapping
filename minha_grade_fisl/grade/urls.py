@@ -5,6 +5,7 @@ urlpatterns = patterns('grade.views',
     url(r'^$', TalkListView.as_view(), name='talks'),
     url(r'^palestras/(?P<pk>\d+)/$', TalkDetailView.as_view(),
         name='talk'),
-    url(r'^palestras/(?P<talk_id>\d+)/escolher_palestra/$', "choice_talk", name="choice_a_talk"),
+    url(r'^palestras/(?P<talk_id>\d+)/escolher_palestra/$',
+        "choice_talk", name="choice_a_talk"),
     url(r"^gerar_grade/", 'gerar_grade', name="gerar_grade"),
 )
