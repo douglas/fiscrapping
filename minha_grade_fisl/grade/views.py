@@ -3,6 +3,7 @@
 from django.utils import simplejson
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import DetailView, TemplateView
+from django.core.urlresolvers import reverse
 
 # fisl
 from grade.models import Room, Area, Zone, Author, Talk
@@ -41,14 +42,26 @@ class TalkListView(TemplateView):
 
         return context
 
+
+def clean_data():
+    """ Clean the grade models """
+
+    grade_models = [Room, Area, Talk, Zone, Author]
+    clear_data = lambda x: x.objects.all().delete()
+
+    for grade_model in grade_models:
+        clear_data(grade_model)
+
+
 def choice_talk(request, talk_id):
     talk = Talk.objects.get(id=talk_id)
+
     if not request.user.is_anonymous:
         user = request.user
         user.talk = talk
         user.save()
 
-    return HttpResponseRedirect("/palestras/%s/" % talk_id)
+    return HttpResponseRedirect(reverse('grade:talk', args=[talk_id]))
 
 # def home(request):
 #     talks = []
