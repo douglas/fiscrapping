@@ -11,8 +11,6 @@ from grade.models import Room, Area, Zone, Author, Talk
 
 class TestViews(TestCase):
     def setUp(self):
-        clean_data()
-
         data_json = open("public/json/data.json", "r").read()
         self.json = simplejson.loads(data_json)
 
@@ -57,11 +55,11 @@ class TestViews(TestCase):
 
     def test_generate_author_from_json(self):
         gerar_authors(self.json)
-        self.assertEquals(Author.objects.count(), 508)
+        self.assertEquals(Author.objects.count(), 511)
 
     def test_generate_talk_from_json(self):
         gerar_talks(self.json)
-        self.assertEquals(Talk.objects.count(), 352)
+        self.assertEquals(Talk.objects.count(), 362)
 
     def test_access_view_and_generate_talks(self):
         client = Client()
