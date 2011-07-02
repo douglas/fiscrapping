@@ -6,7 +6,7 @@
             <h2>{{ talk.title }}</h2>
             <p>{{ talk.abstract }}</p>
 
-            <a href="escolher_palestra/">Eu Vou</a>
+            <a href="{% url grade:choice_talk talk.id %}">Eu Vou</a>
             {{ talk.user_set.all }}
             <fieldset>
                 <legend>Palestrantes</legend>
