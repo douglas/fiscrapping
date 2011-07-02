@@ -1,9 +1,9 @@
 # twitter
 from django.http import HttpResponseRedirect
-from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 
 # user profile
 from twitterauth.models import Profile
@@ -14,8 +14,8 @@ import cgi
 
 # twitter constants
 # twitter auth
-TWITTER_TOKEN = '5sLMAlpdyOCSSqwzGvcxZg'
-TWITTER_SECRET = '8Cx05LKg8IW1BnaFiRzRSnGyc7oBGJ7tTQT6oqqRk'
+TWITTER_TOKEN = 'qCDMfzY7EwYYvfexCRU0g'
+TWITTER_SECRET = 'XaKiXHIiSWvfAAxRfnPOD7anvEdQvL2Dkkp5uv8UU4'
 consumer = oauth.Consumer(TWITTER_TOKEN, TWITTER_SECRET)
 client = oauth.Client(consumer)
 
@@ -58,7 +58,7 @@ def twitter_logout(request):
     # Log a user out using Django's logout function and redirect them
     # back to the homepage.
     logout(request)
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect(reverse('grade:talks'))
 
 
 def twitter_authenticated(request):
@@ -98,8 +98,12 @@ def twitter_authenticated(request):
             '%s@twitter.com' % access_token['screen_name'],
             access_token['oauth_token_secret'])
 
+    # if the user does not have a profile, lets create it
+    if not user.profile_set.count():
         # Save our permanent token and secret for later.
         profile = Profile()
+
+        # update profile info
         profile.user = user
         profile.oauth_token = access_token['oauth_token']
         profile.oauth_secret = access_token['oauth_token_secret']
@@ -111,4 +115,4 @@ def twitter_authenticated(request):
                         password=access_token['oauth_token_secret'])
     login(request, user)
 
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect(reverse('grade:talks'))
