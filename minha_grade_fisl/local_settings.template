@@ -26,6 +26,12 @@ DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar_htmltidy.panels.HTMLTidyDebugPanel',
 )
 
+# django nose
+INSTALLED_APPS.append('django_nose')
+SOUTH_TESTS_MIGRATE = False
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+NOSE_ARGS = ('-s', '--rednose',)
+
 if 'test' in sys.argv:
     DATABASES = {
         'default': {
