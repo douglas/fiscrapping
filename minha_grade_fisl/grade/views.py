@@ -4,6 +4,7 @@ from django.utils import simplejson
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import DetailView, TemplateView
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 
 # fisl
 from grade.models import Room, Area, Zone, Author, Talk
@@ -53,27 +54,15 @@ def clean_data():
         clear_data(grade_model)
 
 
+@login_required
 def choice_talk(request, talk_id):
     talk = Talk.objects.get(id=talk_id)
 
-    if not request.user.is_anonymous:
-        user = request.user
-        user.talk = talk
-        user.save()
+    if not talk.listeners.filter(id=request.user.id).count():
+        talk.listeners.add(request.user)
+        talk.save()
 
     return HttpResponseRedirect(reverse('grade:talk', args=[talk_id]))
-
-# def home(request):
-#     talks = []
-#     days = Talk.objects.dates("date", "day")
-#     hours = Talk.objects.values_list("hour", flat=True).distinct()
-
-#     for day in days:
-#         for hour in hours:
-#             talks.append(Talk.objects.filter(date=day, hour=hour))
-
-#     return TemplateResponse(request, "grade/index.html",
-#                             {'talks_by_day': talks})
 
 
 def gerar_rooms(json):
